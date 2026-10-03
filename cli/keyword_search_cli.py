@@ -15,6 +15,14 @@ def main() -> None:
     match args.command:
         case "search":
             print(f'Searching for: {args.query}')
+            results = []
+            for movie in movies["movies"]:
+                if args.query in movie["title"]:
+                    results.append(movie)
+            for i, movie in enumerate(results, start=1):
+                print(f"{i}.{movie['title']}")
+                if i == 5:
+                    break
         case _:
             parser.print_help()
 
