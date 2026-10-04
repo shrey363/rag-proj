@@ -17,7 +17,7 @@ def main() -> None:
             print(f'Searching for: {args.query}')
             results = []
             for movie in movies["movies"]:
-                if args.query in movie["title"]:
+                if args.query.lower() in movie["title"].lower():
                     results.append(movie)
             for i, movie in enumerate(results, start=1):
                 print(f"{i}.{movie['title']}")
