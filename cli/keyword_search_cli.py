@@ -20,6 +20,10 @@ def main() -> None:
             print(f"Searching for: {args.query}")
             results = []
 
+            stop=[]
+            with open("stopwords.txt") as file:
+                stop = file.read().split()
+            
             for movie in movies["movies"]:
                 new_query = args.query.lower().translate(table).split()
                 new_title = movie["title"].lower().translate(table).split()
