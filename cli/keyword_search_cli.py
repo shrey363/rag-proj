@@ -21,13 +21,14 @@ def main() -> None:
             results = []
 
             stop=[]
-            with open("stopwords.txt") as file:
-                stop = file.read().split()
+            with open("data/stopwords.txt") as file:
+                stop = file.read().lower().translate(table).split()
             
             for movie in movies["movies"]:
                 new_query = args.query.lower().translate(table).split()
+                new_query = [word for word in new_query if word not in stop]    
                 new_title = movie["title"].lower().translate(table).split()
-
+                new_title = [word for word in new_title if word not in stop] 
                 match_found = False
 
                 for query_word in new_query:
